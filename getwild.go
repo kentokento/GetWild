@@ -71,15 +71,25 @@ func draw(ev termbox.Event) {
 		if ev.Key == termbox.KeyEnter {
 			//drawMove(2, 1, "==============================================================================================")
 			drawGetWild(2, 1, []string{
-				"　 　,,,,,lllllllllllllllll,,,,, 　 　　 lllllllllllllllllllllllllllllllll,　,llllllllllllllllllllllllllllllllllll 　 　　 　'lllllllll, 　 　 ,llllllllll 　　　 lllllllll　 lllllllll, 　　lllllllll",
-				"　,,lllllllllllll'''''''lllllllllllll,, 　 　llllllllllllllllllllllllllllllllll 　llllllllllllllllllllllllllllllllllll　 　 　 　 llllllllll　 　 ,llllllllllll　　　,lllllllll 　 lllllllll　 　llllllllll",
-				"　llllllll''　　　 　''llllllllll　 　llllllllll　 　 　 　 　 　　 　　llllllllll　　　　 　　 　　　llllllll,　　 llllll''llllll,　　 llllllll' 　　lllllllll　 　lllllllll",
-				",lllllllll' 　　　 　 　 　　 　　lllllllll,,,,,,,,,,,,,,,,,,,,,, 　　　 　 lllllllllll　　 　　　　　　　 'lllllllll 　 llllll' 'lllllll 　 llllllll'　 　llllllllll　　 llllllllll",
-				"llllllllll　 　 　llllllllllllllllll 　　llllllllllllllllllllllllllllllll　 　 　　 lllllllllll　 　 　　　　　 　　'llllllll,　,llllll'　'llllll,　,llllllll' 　　 lllllllll　　 llllllllll",
-				"llllllllll 　 　　llllllllllllllllll 　　llllllllll 　 　　 　　 　 　　　 lllllllll 　 　 　　 　　　 　　llllllll ,llllll' 　 llllll, llllllll' 　 　 llllllllll　　 lllllllll",
-				"　llllllll,, 　 　 　 ,,lllllllll　 　llllllllll 　 　 　　 　 　　　　 lllllllll　 　 　　　 　 　 　　 lllllll,llllll' 　　llllllllllllll'　 　 　lllllllll　 　llllllllll",
-				"　'llllllllllll,,,,,,,,,,,lllllllllllllll　　 llllllllllllllllllllllllllllllllll, 　　　　lllllllllll 　　　 　　 　 　　 　 lllllllllllll 　　 'llllllllllll 　 　 　lllllllll　　 lllllllllllllll",
-				"　　'''llllllllllllllllllll''' 'lllllll 　　lllllllllllllllllllllllllllllllllll 　 　　 lllllllllll 　 　 　 　 　 　　　 　llllllllll　　 　'lllllllll' 　 　 　 lllllllll　　 lllllllllllllll",
+				"                  ...........",
+				"             ..gMMMMMMMMMMMMMMNa.                                                                 .MMMMMMM]         .MMMMMMMF         .MMMMMMMt   MMMMMM#      .MMMMMM\\                      JMMMMMM`",
+				"           .MMMMMMMMMMMMMMMMMMMMMN,                                     MMMMMM#                    MMMMMMMF        .MMMMMMMMF         dMMMMMMt   .MMMMMMF      MMMMMM#                      .MMMMMMF",
+				"        ..MMMMMMMMMM\"\"\"\"\"MMMMMMMMMM,                                   .MMMMMM%                    MMMMMMMF       .MMMMMMMMMF        JMMMMMM$    dMMMMMM`     .MMMMMM]                      -MMMMMM\\",
+				"       .MMMMMMMM\"`         ?MMMMMMMN.                                  dMMMMM#                     dMMMMMMF       dMMMMMMMMMF       -MMMMMM$                  gMMMMMM                       MMMMMM#",
+				"     .dMMMMMMM^             .MMMMMMM)          ..JgNMMNNgJ.        ....MMMMMMb....                 JMMMMMMF      JMMMMFMMMMMF      .MMMMMM$     ........     .MMMMMMF          ..JgNNNaJ.  .MMMMMM]",
+				"    .MMMMMMMF                7\"\"\"\"\"\"!       .+MMMMMMMMMMMMMMm.    .MMMMMMMMMMMMMM>                 ,MMMMMM@     .MMMM# MMMMMF     .MMMMMM$      MMMMMM#      -MMMMMM!       .JMMMMMMMMMMMN,dMMMMMM",
+				"    dMMMMMMF                              .MMMMMMMMMMMMMMMMMMN,   (MMMMMMMMMMMMM#                  .MMMMMM#    .MMMMM! MMMMMF    .MMMMMMD      .MMMMMMt      MMMMMMF      .dMMMMMMMMMMMMMMMMMMMMMF",
+				"   -MMMMMM#                              JMMMMMM@^    .UMMMMMMN      .MMMMMM>                      .MMMMMM#   .MMMMM^  MMMMMF   .MMMMMMF       dMMMMMM      .MMMMMM\\     .MMMMMMM#\"!  ?TMMMMMMMMM!",
+				"  .MMMMMMM\\         .MMMMMMMMMMMMMM`   .MMMMMM#!        HMMMMMM.     dMMMMM#                        MMMMMM#   MMMMMD   MMMMMF  .MMMMMMF       .MMMMMMF      dMMMMM#     .MMMMMMB`       .MMMMMMMF",
+				"  -MMMMMM#          dMMMMMMMMMMMMMF    dMMMMMM(.........dMMMMMM`    .MMMMMM%                        MMMMMM#  JMMMMF    MMMMM]  MMMMMMF        JMMMMMM!     .MMMMMMF    .MMMMMMF          dMMMMMM%",
+				"  dMMMMMMF         .MMMMMMMMMMMMMM\\   .MMMMMMMMMMMMMMMMMMMMMMM#     JMMMMM#                         dMMMMM# .MMMM@     MMMMM] JMMMMMF        .MMMMMMF      JMMMMMM`   .MMMMMM#           dMMMMM#",
+				"  MMMMMMMb                 dMMMMM#    dMMMMMMMMMMMMMMMMMMMMMMM]    .MMMMMMF                         JMMMMM#.MMMM#`     MMMMM]-MMMMMF         -MMMMMM\\     .MMMMMMF    -MMMMMM]          .MMMMMMF",
+				"  dMMMMMMN.              .MMMMMMM]   .MMMMMMF                      -MMMMMM`                         -MMMMMNMMMMM'     .MMMMMNMMMMMF          MMMMMM#      -MMMMMM:    dMMMMMM)          dMMMMMM`",
+				"  -MMMMMMMN,           .JMMMMMMMM    .MMMMMMb         ........     MMMMMMF                          .MMMMMMMMMM\\      .MMMMMMMMMMF          .MMMMMM]      MMMMMM#     MMMMMMMb        .dMMMMMMF",
+				"   UMMMMMMMMNa.......+MMMMMMMMMMF     MMMMMMMm.     .MMMMMMM$     .MMMMMM]                          .MMMMMMMMMF       .MMMMMMMMMF           dMMMMMM`     .MMMMMM%     JMMMMMMMa.   ..uMMMMMMMM>",
+				"    ?MMMMMMMMMMMMMMMMMMMM#4MMMMM!     ,MMMMMMMMMMMMMMMMMMM@`      dMMMMMMMMMM                        MMMMMMMMF        .MMMMMMMMF           .MMMMMMF      dMMMMM#       WMMMMMMMMMMMMMMMMMMMMM#",
+				"      TMMMMMMMMMMMMMMMM@! ,MMMMF        TMMMMMMMMMMMMMMM\"`        ?MMMMMMMMMF                        MMMMMMM@         .MMMMMMMF            (MMMMMM!     .MMMMMMF        TMMMMMMMMMMMMD.MMMMMM%",
+				"        .\"\"MMMMMMMH9\"`    ,\"\"\"\"'          .\"\"MMMMMM\"\"=              ?\"\"\"\"\"\"\"!                        ?\"\"\"\"\"\"`         .\"\"\"\"\"\"\"             \"\"\"\"\"\"\"      ,\"\"\"\"\"\"`          ?\"MMMMM\"\"!  ,\"\"\"\"\"\"",
 			})
 		} else {
 			drawAnimate(2, 1, []string{
