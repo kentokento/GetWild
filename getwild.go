@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"time"
 
 	termbox "github.com/nsf/termbox-go"
@@ -50,7 +49,7 @@ func draw(ev termbox.Event) {
 	combo += 1
 
 	drawLine(0, 0, fmt.Sprintf("Press ESC to exit. [COMBO %d ] %v", combo, ev.Key))
-	if getWildAndTough == 4 {
+	if getWildAndTough == 4 && ev.Key == termbox.KeyEnter {
 		drawMove(2, 1, []string{
 			"      .JMMMMMMMa,                  ....        .MMM[   .MMMM    .MMM% dMM]  .MM#          .MMM`",
 			"    .MMMM\"\"7\"HMMM[                .MM#         .MMM]   JMMMM   .MMMt .\"\"9`  dMMt          JMMF",
@@ -61,6 +60,20 @@ func draw(ev termbox.Event) {
 			" ,MMMp      .MMM% ,MM#     ...  .MM#            (MMMM#   dMNMMF    .MMM   dMM% .MMM;   .dMMF",
 			"  TMMMMNggMMMMM#  .MMMN..gMM#!  dMMh.,          .MMMM`   dMMMF     JMMF  .MM#   MMMNa.&MMMM:",
 			"   .TMMMMMB= TMD    TMMMMM\"'    ?HMM#           .MMM^    dMMD      MMM'  ?MMD    TMMMM\"(MM8",
+			"",
+			"                                             `",
+			"        .J++J.                            .JJJ        +++++++++++++,                                         .JJJ           .JJJ.  `.JJJ",
+			"       .MMMMM|                            dMM]       .MMMMMMMMMMMMM`                                     `  `dMM]           gMM#   .MMMF",
+			"      .MMMMMMb     .... .....       ......MMM`            dMMF       ..(J.,.    ....    ....    ....,.....  .MMM`.....     .MMM%   .MMM`",
+			"     .MMM'JMMN     -MMNMMMMMMN.  .uMMMMMMMMMF      `     .MMM\\    .gMMMMMMMMp   dMMF    MMM\\  .dMMMMMMdMM]  (MMNMMMMMMN    .MM#    gMMF",
+			"    .MMM! ,MMM.    MMMD`  ,MMM` .MMMY   WMMM\\            JMM#    .MMM^   /MMM. .MMM`   .MM#  .MMM=   WMMM`  MMMD`  (MMM    -MM'    MM#",
+			"   .MMM_...MMM]   .MM#    -MMF .MMM\\    .MM#            .MMM]   .MMM`    .MMM! (MMF    dMM] .MMM'    JMMF  .MM#    JMMF    dMF     MM'",
+			"  .MMMMMMMMMMMb   dMM]    MMM% .MM#     MMM]            .MMM`   JMM#     JMMF  MMM\\   .MMM` (MM#    .MMM:  dMM%   .MMM\\    T9     .\"D",
+			" (MM#!~~~~~dMMN  .MMM`   .MM#  -MMMa...MMMM             dMMF    (MMM,...dMMD  .MMMa...MMMF  (MMMm..JMMM#  .MM#    .MM#   .ggg~   .ggm",
+			"JMM#`      (MMM- (MMF    dMMF   7MMMMM#dMMF      `     .MMM>     7MMMMMMMB^    WMMMMM9MMM\\   ?MMMMM\"dMM%  JMMF    dMM]   .MM#    dMMF",
+			"                                   `                                 ~`                    ....    .MM#",
+			"                                                                                           JMMMNggMMM@`",
+			"                                                      `                                      7\"\"\"\"\"^",
 		})
 		getWildAndTough = 0
 		termbox.Flush()
@@ -223,6 +236,43 @@ func draw(ev termbox.Event) {
 			getWildAndToughArray = []string{}
 		} else if ev.Key != 0 {
 			drawGetWild(2, 1, []string{
+				"=====================================================================",
+				"=============================================================",
+				"=========================================================",
+				"================================================================",
+				"=====================================================",
+				"=============================================",
+				"=============================",
+				"=========================",
+				"=================================",
+				"====================================",
+			})
+			drawGetWild(2, 1, []string{
+				"=========================================",
+				"=================================",
+				"===================================",
+				"============================================",
+				"======================================================",
+				"===========================================",
+				"==================================================",
+				"==================================================================",
+				"========================================================================",
+				"=====================================================================",
+			})
+			drawGetWild(2, 1, []string{
+				"==",
+				"=========================",
+				"============================================",
+				"========================================================",
+				"=====================================================================",
+				"===========================================================",
+				"======================================================",
+				"========================================",
+				"============================",
+				"================",
+			})
+		} else {
+			drawGetWild(2, 1, []string{
 				"==",
 				"=========================",
 				"============================================",
@@ -258,12 +308,23 @@ func draw(ev termbox.Event) {
 				"========================================================================",
 				"=====================================================================",
 			})
-		} else {
-			getWildAndToughArray = append(getWildAndToughArray, getWildAndToughStrs[gw%4])
-			gw += 1
-			rand.Seed(time.Now().UnixNano())
-			i := rand.Intn(4) + 2
-			drawLine(i, i, fmt.Sprintf("%v", getWildAndToughArray))
+			//		} else {
+			//			getWildAndToughArray = append(getWildAndToughArray, getWildAndToughStrs[gw%4])
+			//			gw += 1
+			//			rand.Seed(time.Now().UnixNano())
+			//			x := rand.Intn(4) + 2
+			//			l := len(getWildAndToughArray)
+			//			if l < 20 {
+			//				drawLine(x, x, fmt.Sprintf("%v", getWildAndToughArray))
+			//			} else {
+			//				for i := 0; i < l; i += 20 {
+			//					if i == 0 {
+			//						drawLine(x, x, fmt.Sprintf("%v", getWildAndToughArray[:20]))
+			//					} else {
+			//						drawLine(x, x, fmt.Sprintf("%v", getWildAndToughArray[i:l-i+20]))
+			//					}
+			//				}
+			//			}
 		}
 	}
 
