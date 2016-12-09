@@ -43,7 +43,7 @@ func drawGetWild(x, y int, strs []string) {
 	for _, str := range strs {
 		drawLine(x, y, str)
 		termbox.Flush()
-		time.Sleep(20 * time.Millisecond)
+		time.Sleep(5 * time.Millisecond)
 		y += 1
 	}
 }
@@ -56,53 +56,185 @@ func draw(ev termbox.Event) {
 	switch ev.Ch {
 	case 103:
 		getWildAndTough = append(getWildAndTough, "GET")
-		drawLine(2, 1, fmt.Sprintf("%v ======== %d COMMBO", getWildAndTough, combo))
+		drawGetWild(2, 1, []string{
+			"                      ...(ggNNNNNggJ...",
+			"                  .JMMMMMMMMMMMMMMMMMMMMa,",
+			"               .MMMMMMMMMMMMMMMMMMMMMMMMMMNx                                                   gNNNNNNNK",
+			"            .JMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN,                                                .MMMMMMMMF",
+			"          .dMMMMMMMMMMMMY\"\"7??7\"\"MMMMMMMMMMMMM,                                               dMMMMMMMM`",
+			"         .MMMMMMMMMM#\"             ?MMMMMMMMMMN                  `  `                        .MMMMMMMMF",
+			"       .MMMMMMMMMM@`                 MMMMMMMMMM;  `  `  `  `  `  ..........                  (MMMMMMMM\\",
+			"      .MMMMMMMMM#'                   ,MMMMMMMMM%            ..gMMMMMMMMMMMMMNa,  `   `  JMMMMMMMMMMMMMMMMMM%",
+			"     .MMMMMMMMMD                      `````````           .MMMMMMMMMMMMMMMMMMMMN,      .MMMMMMMMMMMMMMMMMM#",
+			"    .MMMMMMMMMF                                        .(MMMMMMMMMMMMMMMMMMMMMMMMp     -MMMMMMMMMMMMMMMMMMF",
+			"   .MMMMMMMMM#                                       `.MMMMMMMMMMB\"7?7\"WMMMMMMMMMM,    7\"\"\"TMMMMMMMM@\"\"\"\"\"`",
+			"   -MMMMMMMMM\\             ...................    `  JMMMMMMMM#'         WMMMMMMMMN        JMMMMMMMM'",
+			"  .MMMMMMMMMF             .MMMMMMMMMMMMMMMMMMF      JMMMMMMMM$           .MMMMMMMMM       .MMMMMMMM#            `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `",
+			"  .MMMMMMMMM%             MMMMMMMMMMMMMMMMMMM\\     -MMMMMMMM$             MMMMMMMMM       .MMMMMMMM%",
+			"  dMMMMMMMMM`         `  .MMMMMMMMMMMMMMMMMM#     .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#       dMMMMMMM#",
+			"  MMMMMMMMM#             dMMMMMMMMMMMMMMMMMM]     dMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMF    ` .MMMMMMMMF",
+			"  MMMMMMMMMN                       dMMMMMMMM`    .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`      JMMMMMMMM!",
+			"  MMMMMMMMMM;    `  `            .dMMMMMMMMF     .MMMMMMMM]                             .MMMMMMMMF            `   `    `    `    `    `    `    `    `    `    `    `    `    `    `    `    `    `",
+			"  dMMMMMMMMMN,                  .MMMMMMMMMM>     JMMMMMMMM]                          `  -MMMMMMMM\\         `",
+			"  ,MMMMMMMMMMMe.             ..MMMMMMMMMMM#      JMMMMMMMMb           .Jgggggggg:       MMMMMMMM#",
+			"   ?MMMMMMMMMMMMNJ.. `  ...JMMMMMMMMMMMMMM%      ,MMMMMMMMMm,       ..MMMMMMMMM$       .MMMMMMMMF      `            `    `    `    `    `    `    `    `    `    `    `    `    `    `    `    `    `",
+			"    ?MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM        UMMMMMMMMMMMNgggNMMMMMMMMMM#'        dMMMMMMMMMNNNN]",
+			"     .WMMMMMMMMMMMMMMMMMMMMMMMMM\" -MMMMMMF         TMMMMMMMMMMMMMMMMMMMMMMM#^          MMMMMMMMMMMMMM!      `  `",
+			"       .TMMMMMMMMMMMMMMMMMMMMB^   (MMMMMM!      `    TMMMMMMMMMMMMMMMMMMM\"`          ` ,MMMMMMMMMMMM#",
+			"          .\"WMMMMMMMMMMMMB\"`      ?\"\"\"\"\"\"              .TWMMMMMMMMMMY\"^                  _\"\"HMMMMMMH\\",
+		})
 	case 119:
 		getWildAndTough = append(getWildAndTough, "WILD")
-		drawLine(3, 2, fmt.Sprintf("%v ======== %d COMMBO", getWildAndTough, combo))
+		drawGetWild(2, 1, []string{
+			" (gggggggg;           .gggggggge            .gggggggg`   .NNNNNNN]       (ggggggg~                          .gggggggc",
+			" JMMMMMMMM]          .MMMMMMMMM#           .MMMMMMMM^    MMMMMMMM`      .MMMMMMM#                           MMMMMMMM!",
+			" -MMMMMMMM]          MMMMMMMMMM#          .MMMMMMMM%    .MMMMMMMF       .MMMMMMM]                          .MMMMMMMF",
+			" ,MMMMMMMM]         JMMMMMMMMMM#         .MMMMMMMMt     dMMMMMMM\\       MMMMMMMM`                          JMMMMMMM%",
+			" .MMMMMMMM]        .MMMMMMMMMMM#         MMMMMMMM$                     .MMMMMMMF                          .MMMMMMM#",
+			"  MMMMMMMMF       .MMMMM#dMMMMM#        dMMMMMMMD       .......        dMMMMMMM:              ....(...    -MMMMMMMF",
+			"  MMMMMMMMF      .MMMMMM^dMMMMM#       (MMMMMMMF      .MMMMMMMM       .MMMMMMM#           .gMMMMMMMMMMMa. MMMMMMMM`",
+			"  dMMMMMMMF      MMMMMMF MMMMMM#    ` .MMMMMMMF       .MMMMMMMF       -MMMMMMM%        .JMMMMMMMMMMMMMMMN(MMMMMMMF",
+			"  JMMMMMMMF     JMMMMMF  MMMMMM@     .MMMMMMMF        dMMMMMMM!       MMMMMMM#        -MMMMMMMMMMMMMMMMMMMMMMMMMM\\",
+			"  (MMMMMMM@    .MMMMM#   MMMMMM@    .MMMMMMMF        .MMMMMMM#    `  .MMMMMMMF      .MMMMMMMMM@=`   _TMMMMMMMMMM#",
+			"  ,MMMMMMM@   .MMMMMM!   MMMMMM@   .MMMMMMMF         JMMMMMMM%       dMMMMMMM!     .MMMMMMMMF         .MMMMMMMMM]",
+			"  .MMMMMMM#  .MMMMMM^    MMMMMMF  .MMMMMMMF         .MMMMMMM#       .MMMMMMMF     .MMMMMMMMt           -MMMMMMMM`",
+			"   MMMMMMM#  dMMMMMF     MMMMMMF  dMMMMMMF          -MMMMMMMF       JMMMMMMM\\     dMMMMMMMF            ,MMMMMMMF",
+			"  `MMMMMMM@ (MMMMMF      MMMMMMF -MMMMMM@        `  MMMMMMMM!    ` .MMMMMMM#     .MMMMMMM#             JMMMMMMM>        `   `   `   `   `   `   `   `   `   `   `   `   `   `   `   `   `   `   `   `",
+			"   dMMMMMMF.MMMMM@       MMMMMMF.MMMMMM@           .MMMMMMMF       .MMMMMMMF     dMMMMMMMF            .MMMMMMM#",
+			"   dMMMMMMNMMMMMM`       MMMMMMNMMMMMM@            dMMMMMMM\\       dMMMMMMM`     MMMMMMMM]            dMMMMMMMt",
+			"   (MMMMMMMMMMMM^        MMMMMMMMMMMM#         `  .MMMMMMM#       .MMMMMMMF      MMMMMMMMb          .JMMMMMMMM        `",
+			"   ,MMMMMMMMMMM$         MMMMMMMMMMM#`            -MMMMMMMF       JMMMMMMM\\      MMMMMMMMM,        .MMMMMMMMMF            `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `  `",
+			"   .MMMMMMMMMMF      `   MMMMMMMMMMM`      `      MMMMMMMM`    ` .MMMMMMM#    `  -MMMMMMMMMNgJ.(gMMMMMMMMMMMM!     `",
+			"    MMMMMMMMM@           MMMMMMMMMM`             .MMMMMMMF       .MMMMMMM]        ?MMMMMMMMMMMMMMMMMBMMMMMMM#",
+			"    MMMMMMMM#            MMMMMMMMM!           `  dMMMMMMM\\       MMMMMMMM`         ,MMMMMMMMMMMMMM@!.MMMMMMM%          `",
+			"    7\"\"\"\"\"\"\"!            \"\"\"\"\"\"\"\"!               \"\"\"\"\"\"\"\"    `  .\"\"\"\"\"\"\"=            .THMMMMMMW\"^   ?\"\"\"\"\"\"\"",
+		})
 	case 97:
 		getWildAndTough = append(getWildAndTough, "AND")
-		drawLine(4, 3, fmt.Sprintf("%v ======== %d COMMBO", getWildAndTough, combo))
+		drawGetWild(2, 1, []string{
+			"                             .............                                                                                     ..........",
+			"                            .MMMMMMMMMMMM]                                                                                     dMMMMMMMMF",
+			"                           .MMMMMMMMMMMMMb                                                                                    .MMMMMMMMM:",
+			"                          .MMMMMMMMMMMMMMN                                                                                    JMMMMMMMM#",
+			"                         .MMMMMMMMMMMMMMMM-                                                                                  .MMMMMMMMM%",
+			"                        (MMMMMMMMMMMMMMMMM]                                                                                  .MMMMMMMMM",
+			"                       JMMMMMMMM@MMMMMMMMMN           `     `    `  `   `  ` ........     `  `                 ........      MMMMMMMMMF",
+			"                 `   .dMMMMMMMMF MMMMMMMMMN.                .MMMMMMMM#   .&MMMMMMMMMMMNa,                 ..gMMMMMMMMMMMN,  .MMMMMMMMM!",
+			"                    .MMMMMMMMMF  JMMMMMMMMM|    `  `     `  JMMMMMMMM%.JMMMMMMMMMMMMMMMMMN.      `  `   .MMMMMMMMMMMMMMMMMN,dMMMMMMMMF",
+			"                   .MMMMMMMMMF   .MMMMMMMMMb               .MMMMMMMMMJMMMMMMMMMMMMMMMMMMMMN           .MMMMMMMMMMMMMMMMMMMMNMMMMMMMMM%",
+			"                  .MMMMMMMMMF    .MMMMMMMMMN               .MMMMMMMMMMMMMMH\"\"WMMMMMMMMMMMMM-        .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#",
+			"     `   `  `  ` .MMMMMMMMMF      MMMMMMMMMM.         `    dMMMMMMMMMMB^        TMMMMMMMMMM:       .MMMMMMMMMM@^       TMMMMMMMMMMMMF        `   `   `   `   `   `   `   `   `   `   `   `   `   `",
+			"                .MMMMMMMMMD       dMMMMMMMMM]             .MMMMMMMMMM^           MMMMMMMMMM       .MMMMMMMMM@`          .MMMMMMMMMMM`",
+			"               .MMMMMMMMM$        JMMMMMMMMMb             JMMMMMMMMM`            MMMMMMMMMF      .MMMMMMMMMD             (MMMMMMMMMF",
+			"              (MMMMMMMMMt         ,MMMMMMMMMN        `   .MMMMMMMMM%            .MMMMMMMMM!     .MMMMMMMMMF              .MMMMMMMMM\\",
+			"             JMMMMMMMMM\\          .MMMMMMMMMM;           -MMMMMMMM#             dMMMMMMMM#      dMMMMMMMM#               -MMMMMMMM#",
+			"           .dMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM]           MMMMMMMMM%            .MMMMMMMMM%     .MMMMMMMMM\\               dMMMMMMMM]",
+			"          .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#       `  .MMMMMMMM#             JMMMMMMMM#      dMMMMMMMMM               .MMMMMMMMM",
+			"         .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.         dMMMMMMMMF         `  .MMMMMMMMMF      MMMMMMMMMN              .MMMMMMMMMF",
+			"        .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM[        .MMMMMMMMM!            .MMMMMMMMM!      MMMMMMMMMM.            .MMMMMMMMMM:",
+			"       .MMMMMMMMMM^?????????????????MMMMMMMMMMb        (MMMMMMMMF             MMMMMMMMMF       MMMMMMMMMMb          ..MMMMMMMMMM#",
+			"      .MMMMMMMMM#`                  dMMMMMMMMMN      ` MMMMMMMMM\\       `    .MMMMMMMMM\\       JMMMMMMMMMMNJ.. `...dMMMMMMMMMMMM%",
+			"     .MMMMMMMMM#`                   JMMMMMMMMMM-      .MMMMMMMM#             JMMMMMMMM#         WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#",
+			"    -MMMMMMMMM@                     ,MMMMMMMMMM]      dMMMMMMMMF            .MMMMMMMMMF          UMMMMMMMMMMMMMMMMMMMD(MMMMMMMMF          `   `   `   `   `   `   `   `   `   `   `   `  `  `  `  `  `",
+			"   JMMMMMMMMM@                      .MMMMMMMMMM@     .MMMMMMMMM`            .MMMMMMMMM`      `    (HMMMMMMMMMMMMMMM\"  MMMMMMMMM!",
+			"  (\"\"\"\"\"\"\"\"\"\"                        7\"\"\"\"\"\"\"\"\"\"     ,\"\"\"\"\"\"\"\"^     `   `   ?\"\"\"\"\"\"\"\"^               7WMMMMMMMH9\"`   .\"\"\"\"\"\"\"\"=",
+		})
 	case 116:
 		getWildAndTough = append(getWildAndTough, "TOUGH!!")
-		drawLine(5, 4, fmt.Sprintf("%v ======== %d COMMBO", getWildAndTough, combo))
+		drawGetWild(2, 1, []string{
+			"  ggggggggggggggggggggggggggggg[                                                                                            .gggggge",
+			" .MMMMMMMMMMMMMMMMMMMMMMMMMMMMM\\                                                                                            JMMMMMMt",
+			" dMMMMMMMMMMMMMMMMMMMMMMMMMMMM#                                                                                            .MMMMMM#",
+			" HHHHHHHHHHHMMMMMMM#HHHHHHHHHHt                                                                                            .MMMMMMF",
+			"           (MMMMMMM`                    ....                                                         `                     MMMMMMM!",
+			"           MMMMMMMF               ..NMMMMMMMMMMNJ,          .NNNNNNP         .NNNNNNK          ..gMMMMMMMa,  qNNNNNN`     .MMMMMMF  .gMMMMMMMNa,",
+			"          .MMMMMMM\\            .uMMMMMMMMMMMMMMMMMN.        MMMMMMM%         JMMMMMMF        .MMMMMMMMMMMMMh.MMMMMMF      JMMMMMMLJMMMMMMMMMMMMMb",
+			"          dMMMMMM#           .dMMMMMMMMMMMMMMMMMMMMN,   `  .MMMMMM#     `   .MMMMMMM`   `  .MMMMMMMMMMMMMMMMMMMMMMM\\     .MMMMMMMMMMMMMMMMMMMMMMM]",
+			"         .MMMMMMMF          .MMMMMMMB^     .TMMMMMMMN      JMMMMMMF         -MMMMMMF      JMMMMMMM#\"`   ?HMMMMMMMM#      -MMMMMMMM@^     UMMMMMMMF",
+			"    `    (MMMMMMM`     `   JMMMMMM#!         JMMMMMMM-    .MMMMMMM!         MMMMMMM\\     dMMMMMMB`        4MMMMMMM]   `  MMMMMMM#`       .MMMMMMM%     `    `    `    `    `    `    `    `    `    `",
+			"      ` .MMMMMMMF         -MMMMMM@           .MMMMMMM)    -MMMMMMF     `   .MMMMMM#     JMMMMMMF          ,MMMMMMM`     .MMMMMM#         .MMMMMMM",
+			"  `     .MMMMMMM\\   `   `.MMMMMMM`           .MMMMMMM!    MMMMMMM\\         dMMMMMM]    .MMMMMMM           .MMMMMMF      dMMMMMM%         JMMMMMMF",
+			"     `  dMMMMMM#     `   dMMMMMMF    `  `    (MMMMMM#    .MMMMMM#         .MMMMMMM`    dMMMMMMF           dMMMMMM>     .MMMMMM#         .MMMMMMM!     `  `   `  `  `   `  `  `   `  `  `   `  `  `",
+			"       .MMMMMMM]  `      MMMMMMM\\           .MMMMMMM^    dMMMMMMF    `    (MMMMMMF    .MMMMMMM)       `  .MMMMMM#      (MMMMMMF   `  `  .MMMMMM#                                                    `",
+			"  `    JMMMMMMM`         MMMMMMM]  `       .MMMMMMMF    .MMMMMMM:       `.MMMMMMM>    .MMMMMMM]         .MMMMMMMt      MMMMMMM`         dMMMMMM%",
+			"   `  .MMMMMMMF     `  ` MMMMMMMN.        .MMMMMMMD     .MMMMMMM,       .MMMMMMM#     .MMMMMMMM,   `  .dMMMMMMMM      .MMMMMMF         .MMMMMM#     `     `         `         `         `        `",
+			"      .MMMMMMM:          -MMMMMMMMN.....gMMMMMMMM^      ,MMMMMMMMN-..JMMMMMMMMMMt      ZMMMMMMMMMNNNMMMMMMMMMMMF    ` dMMMMMM\\   `     JMMMMMMF        `     `  `      `  `      `  `      `  `",
+			"    ` MMMMMMM#   `  `     ?MMMMMMMMMMMMMMMMMMMM\"        .MMMMMMMMMMMMMMMBMMMMMMM        TMMMMMMMMMMMMMM@MMMMMMM!     .MMMMMM#       ` .MMMMMMM!                                                     `",
+			"     .MMMMMMMt             .YMMMMMMMMMMMMMMMY^           .WMMMMMMMMMMMD!.MMMMMMF         .TMMMMMMMMMM\"`.MMMMMMF      (MMMMMM]         .MMMMMMF",
+			"      ~~~~~~~                 _\"\"\"MMMM\"\"\"=`                 ?\"\"\"\"\"\"^     ~~~~~~`              ???!     dMMMMMM\\      _~~~~~~          _~~~~~~`",
+			"                                                                                    ........          .MMMMMMF",
+			"                                                      `                             dMMMMMMMp       .MMMMMMM@",
+			"                                                                                    ,MMMMMMMMMMNNMMMMMMMMMMD",
+			"                                                  `                                  ,MMMMMMMMMMMMMMMMMMM\"",
+			"                                                                    `                   7\"MMMMMMMMMM\"\"^",
+		})
 	default:
 		getWildAndTough = []string{}
 		if ev.Key == termbox.KeyEnter {
-			//drawMove(2, 1, "==============================================================================================")
 			drawGetWild(2, 1, []string{
-				"                  ...........",
-				"             ..gMMMMMMMMMMMMMMNa.                                                                 .MMMMMMM]         .MMMMMMMF         .MMMMMMMt   MMMMMM#      .MMMMMM\\                      JMMMMMM`",
-				"           .MMMMMMMMMMMMMMMMMMMMMN,                                     MMMMMM#                    MMMMMMMF        .MMMMMMMMF         dMMMMMMt   .MMMMMMF      MMMMMM#                      .MMMMMMF",
-				"        ..MMMMMMMMMM\"\"\"\"\"MMMMMMMMMM,                                   .MMMMMM%                    MMMMMMMF       .MMMMMMMMMF        JMMMMMM$    dMMMMMM`     .MMMMMM]                      -MMMMMM\\",
-				"       .MMMMMMMM\"`         ?MMMMMMMN.                                  dMMMMM#                     dMMMMMMF       dMMMMMMMMMF       -MMMMMM$                  gMMMMMM                       MMMMMM#",
-				"     .dMMMMMMM^             .MMMMMMM)          ..JgNMMNNgJ.        ....MMMMMMb....                 JMMMMMMF      JMMMMFMMMMMF      .MMMMMM$     ........     .MMMMMMF          ..JgNNNaJ.  .MMMMMM]",
-				"    .MMMMMMMF                7\"\"\"\"\"\"!       .+MMMMMMMMMMMMMMm.    .MMMMMMMMMMMMMM>                 ,MMMMMM@     .MMMM# MMMMMF     .MMMMMM$      MMMMMM#      -MMMMMM!       .JMMMMMMMMMMMN,dMMMMMM",
-				"    dMMMMMMF                              .MMMMMMMMMMMMMMMMMMN,   (MMMMMMMMMMMMM#                  .MMMMMM#    .MMMMM! MMMMMF    .MMMMMMD      .MMMMMMt      MMMMMMF      .dMMMMMMMMMMMMMMMMMMMMMF",
-				"   -MMMMMM#                              JMMMMMM@^    .UMMMMMMN      .MMMMMM>                      .MMMMMM#   .MMMMM^  MMMMMF   .MMMMMMF       dMMMMMM      .MMMMMM\\     .MMMMMMM#\"!  ?TMMMMMMMMM!",
-				"  .MMMMMMM\\         .MMMMMMMMMMMMMM`   .MMMMMM#!        HMMMMMM.     dMMMMM#                        MMMMMM#   MMMMMD   MMMMMF  .MMMMMMF       .MMMMMMF      dMMMMM#     .MMMMMMB`       .MMMMMMMF",
-				"  -MMMMMM#          dMMMMMMMMMMMMMF    dMMMMMM(.........dMMMMMM`    .MMMMMM%                        MMMMMM#  JMMMMF    MMMMM]  MMMMMMF        JMMMMMM!     .MMMMMMF    .MMMMMMF          dMMMMMM%",
-				"  dMMMMMMF         .MMMMMMMMMMMMMM\\   .MMMMMMMMMMMMMMMMMMMMMMM#     JMMMMM#                         dMMMMM# .MMMM@     MMMMM] JMMMMMF        .MMMMMMF      JMMMMMM`   .MMMMMM#           dMMMMM#",
-				"  MMMMMMMb                 dMMMMM#    dMMMMMMMMMMMMMMMMMMMMMMM]    .MMMMMMF                         JMMMMM#.MMMM#`     MMMMM]-MMMMMF         -MMMMMM\\     .MMMMMMF    -MMMMMM]          .MMMMMMF",
-				"  dMMMMMMN.              .MMMMMMM]   .MMMMMMF                      -MMMMMM`                         -MMMMMNMMMMM'     .MMMMMNMMMMMF          MMMMMM#      -MMMMMM:    dMMMMMM)          dMMMMMM`",
-				"  -MMMMMMMN,           .JMMMMMMMM    .MMMMMMb         ........     MMMMMMF                          .MMMMMMMMMM\\      .MMMMMMMMMMF          .MMMMMM]      MMMMMM#     MMMMMMMb        .dMMMMMMF",
-				"   UMMMMMMMMNa.......+MMMMMMMMMMF     MMMMMMMm.     .MMMMMMM$     .MMMMMM]                          .MMMMMMMMMF       .MMMMMMMMMF           dMMMMMM`     .MMMMMM%     JMMMMMMMa.   ..uMMMMMMMM>",
-				"    ?MMMMMMMMMMMMMMMMMMMM#4MMMMM!     ,MMMMMMMMMMMMMMMMMMM@`      dMMMMMMMMMM                        MMMMMMMMF        .MMMMMMMMF           .MMMMMMF      dMMMMM#       WMMMMMMMMMMMMMMMMMMMMM#",
-				"      TMMMMMMMMMMMMMMMM@! ,MMMMF        TMMMMMMMMMMMMMMM\"`        ?MMMMMMMMMF                        MMMMMMM@         .MMMMMMMF            (MMMMMM!     .MMMMMMF        TMMMMMMMMMMMMD.MMMMMM%",
-				"        .\"\"MMMMMMMH9\"`    ,\"\"\"\"'          .\"\"MMMMMM\"\"=              ?\"\"\"\"\"\"\"!                        ?\"\"\"\"\"\"`         .\"\"\"\"\"\"\"             \"\"\"\"\"\"\"      ,\"\"\"\"\"\"`          ?\"MMMMM\"\"!  ,\"\"\"\"\"\"",
+				"      .JMMMMMMMa,                  ....        .MMM[   .MMMM    .MMM% dMM]  .MM#          .MMM`",
+				"    .MMMM\"\"7\"HMMM[                .MM#         .MMM]   JMMMM   .MMMt .\"\"9`  dMMt          JMMF",
+				"   JMM#'      dMM@    .JgNNNJ.  .&MMMN&,        MMM]  .MMdMN   dMM$  (gg[  .MM#    .(gNNa.MMM\\",
+				"  JMM#              .MMMY\"WMMM, TUMMM\"9`        MMM] .MM^dMN  JMMD  .MMM>  JMMF  .MMMMHHMMMM#",
+				" .MMM%    dMMMMMM! .MM@    dMMF  (MMF           dMM].MMF dMN .MMF   .MM#   MMM! .MMM^   .MMM]",
+				" ,MMM.    \"\"\"WMMF .MMMMMMMMMMM]  MMM!           JMMbdMF  dMN.MMF    dMM]  .MM#  MMM]    .MMM`",
+				" ,MMMp      .MMM% ,MM#     ...  .MM#            (MMMM#   dMNMMF    .MMM   dMM% .MMM;   .dMMF",
+				"  TMMMMNggMMMMM#  .MMMN..gMM#!  dMMh.,          .MMMM`   dMMMF     JMMF  .MM#   MMMNa.&MMMM:",
+				"   .TMMMMMB= TMD    TMMMMM\"'    ?HMM#           .MMM^    dMMD      MMM'  ?MMD    TMMMM\"(MM8",
+				"",
+				"                                                                                                         `",
+				"",
+				"",
+				"                                             `",
+				"        .J++J.                            .JJJ        +++++++++++++,                                         .JJJ           .JJJ.  `.JJJ",
+				"       .MMMMM|                            dMM]       .MMMMMMMMMMMMM`                                     `  `dMM]           gMM#   .MMMF",
+				"      .MMMMMMb     .... .....       ......MMM`            dMMF       ..(J.,.    ....    ....    ....,.....  .MMM`.....     .MMM%   .MMM`",
+				"     .MMM'JMMN     -MMNMMMMMMN.  .uMMMMMMMMMF      `     .MMM\\    .gMMMMMMMMp   dMMF    MMM\\  .dMMMMMMdMM]  (MMNMMMMMMN    .MM#    gMMF",
+				"    .MMM! ,MMM.    MMMD`  ,MMM` .MMMY   WMMM\\            JMM#    .MMM^   /MMM. .MMM`   .MM#  .MMM=   WMMM`  MMMD`  (MMM    -MM'    MM#",
+				"   .MMM_...MMM]   .MM#    -MMF .MMM\\    .MM#            .MMM]   .MMM`    .MMM! (MMF    dMM] .MMM'    JMMF  .MM#    JMMF    dMF     MM'",
+				"  .MMMMMMMMMMMb   dMM]    MMM% .MM#     MMM]            .MMM`   JMM#     JMMF  MMM\\   .MMM` (MM#    .MMM:  dMM%   .MMM\\    T9     .\"D",
+				" (MM#!~~~~~dMMN  .MMM`   .MM#  -MMMa...MMMM             dMMF    (MMM,...dMMD  .MMMa...MMMF  (MMMm..JMMM#  .MM#    .MM#   .ggg~   .ggm",
+				"JMM#`      (MMM- (MMF    dMMF   7MMMMM#dMMF      `     .MMM>     7MMMMMMMB^    WMMMMM9MMM\\   ?MMMMM\"dMM%  JMMF    dMM]   .MM#    dMMF",
+				"                                   `                                 ~`                    ....    .MM#",
+				"                                                                                           JMMMNggMMM@`",
+				"                                                      `                                      7\"\"\"\"\"^",
 			})
 		} else {
-			drawAnimate(2, 1, []string{
+			drawGetWild(2, 1, []string{
 				"==",
-				"===",
 				"=====",
-				"========",
-				"==========",
+				"=========",
+				"===========",
+				"==============",
 				"===================",
 				"==============",
 				"==========",
 				"========",
 				"======",
+			})
+			drawGetWild(2, 1, []string{
+				"===================",
+				"================",
+				"=================",
+				"==============",
+				"========",
+				"==========",
+				"==============",
+				"==========",
+				"========",
+				"======",
+			})
+			drawGetWild(2, 1, []string{
+				"======",
+				"========",
+				"==========",
+				"==============",
+				"==============",
+				"========",
+				"==========",
+				"================",
+				"=================",
+				"===================",
 			})
 		}
 	}
